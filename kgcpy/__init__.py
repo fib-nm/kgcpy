@@ -127,8 +127,8 @@ def roundCoordinates(lat,lon):
     x = round((lon + 180) * img.size[0] / 360 - 0.5)
     y = round((90 - lat) * img.size[1] / 180 - 0.5) if lat != -90 else img.size[1] - 1
 
-    lonRound = round(((x + 0.5) * 360 / img.size[0] - 180), 4)
-    latRound = round((-(y + 0.5) * 180 / img.size[1] + 90), 4)
+    lonRound = round(((x + 0.5) * 360 / img.size[0] - 180), 2)
+    latRound = round((-(y + 0.5) * 180 / img.size[1] + 90), 2)
 
     return latRound, lonRound
 
