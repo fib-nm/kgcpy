@@ -47,8 +47,9 @@ def lookupCZ(lat,lon):
     lon = ((lon + 180.0) % 360.0) - 180.0
 
     # Get the KG zone values of the pixel at position (x, y)
-    x = round((lon+180)*(img.size[0])/360 - 0.5)
-    y = round(-(lat-90)*(img.size[1])/180 - 0.5) if lat != -90 else img.size[1]-1
+    x = round((lon + 180) * img.size[0] / 360 - 0.5)
+    y = round((90 - lat) * img.size[1] / 180 - 0.5) if lat != -90 else img.size[1] - 1
+
     num = img.getpixel((x, y))
 
     # Use the loc method to find the index of the row that matches the input values
@@ -121,8 +122,8 @@ def roundCoordinates(lat,lon):
     """
 
     # Get the RGB values of the pixel at position (x, y)
-    x = round((lon+180)*(img.size[0])/360 - 0.5)
-    y = round(-(lat-90)*(img.size[1])/180 - 0.5)
+    x = round((lon + 180) * img.size[0] / 360 - 0.5)
+    y = round((90 - lat) * img.size[1] / 180 - 0.5)
 
     lonRound = round(((x + 0.5) * 360 / img.size[0] - 180), 2)
     latRound = round((-(y + 0.5) * 180 / img.size[1] + 90), 2)
@@ -148,8 +149,8 @@ def nearbyCZ(lat,lon,size=1):
     lon = ((lon + 180.0) % 360.0) - 180.0
 
     # Get the RGB values of the pixel at position (x, y)
-    x = round((lon+180)*(img.size[0])/360 - 0.5)
-    y = round(-(lat-90)*(img.size[1])/180 - 0.5) if lat != -90 else img.size[1]-1
+    x = round((lon + 180) * img.size[0] / 360 - 0.5)
+    y = round((90 - lat) * img.size[1] / 180 - 0.5) if lat != -90 else img.size[1] - 1
 
     num_0 = img.getpixel((x, y))
     climateZone = kg_zoneNum_df['kg_zone'].loc[kg_zoneNum_df['zoneNum'] == num_0].values[0]
